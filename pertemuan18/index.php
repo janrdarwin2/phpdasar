@@ -7,7 +7,15 @@ if (!isset($_SESSION["login"])) {
 }
 
 require "functions.php";
-$mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC");
+
+// pagination
+$jumlahDataPerHalaman = 2;
+$jumlahData = count(query("SELECT * FROM mahasiswa"));
+$jumlahHalaman = ceil($jumlahData / $jumlahDataPerHalaman);
+$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
+$awalData = ( $jumlahDataPerHalaman * $halamanAktif ) - $jumlahDataPerHalaman;
+
+$mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC LIMIT $awalData, $jumlahDataPerHalaman");
 
 // tombol cari ditekan
 if (isset($_POST["cari"])) {
@@ -55,6 +63,16 @@ if (isset($_POST["cari"])) {
   </nav>
 	<div class="container-md">
 		<h2>Daftar</h2>
+
+		<!-- navigasi halaman -->
+		<?php for( $i = 1; $i <= $jumlahHalaman; $i++) : ?>
+			<?php if( $i == $halamanAktif ) : ?>
+					<a href="?halaman=<?= $i; ?>" style="font-weight: bold; color: red;"><?= $i; ?></a>
+				<?php else : ?>
+					<a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+			<?php endif; ?>
+		<?php endfor; ?>
+
 		<table class="table">
 			<thead>
 			<tr>
