@@ -23,8 +23,11 @@ if (isset($_POST["cari"])) {
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous" />
+
+	<!-- bootstrap icon -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
+
 	<title>Mahasiswa</title>
 </head>
 <body>
@@ -58,29 +61,23 @@ if (isset($_POST["cari"])) {
 				<th scope="col">No.</th>
 				<th scope="col">Aksi</th>
 				<th scope="col">Gambar</th>
-				<th scope="col">NRP</th>
 				<th scope="col">Nama</th>
-				<th scope="col">Email</th>
-				<th scope="col">Jurusan</th>
 			</tr>
 			</thead>
 			<tbody>
 			<?php $i = 1; foreach ($mahasiswa as $row) : ?>
 			<tr>
 				<td><?= $i ?></td>
-				<td><a href="ubah.php?id=<?= $row["id"]; ?>"><i class="bi bi-pencil"></i></a> <a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Yakin?')"><i class="bi bi-eraser"></i></a></td>
+				<td><a href="ubah.php?id=<?= $row["id"]; ?>"><i class="bi bi-eyeglasses"></i></a></td>
 				<td><img src="img/<?= $row["gambar"]; ?>" alt="img/<?= $row["gambar"]; ?>" width="40"></td>
-				<td><?= $row["nrp"]; ?></td>
 				<td><?= $row["nama"]; ?></td>
-				<td><?= $row["email"]; ?></td>
-				<td><?= $row["jurusan"]; ?></td>
 			</tr>
 			<?php $i++; endforeach; ?>
 			</tbody>
 		</table>
 	</div>
 	
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
