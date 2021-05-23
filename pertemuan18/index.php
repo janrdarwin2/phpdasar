@@ -8,11 +8,26 @@ if (!isset($_SESSION["login"])) {
 
 require "functions.php";
 
-$mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC");
+// pagination
+$batas = 2;
+
 
 // tombol cari ditekan
-if (isset($_POST["cari"])) {
-	$mahasiswa = cari($_POST["keyword"]);
+if (isset($_GET["cari"])) {
+
+	$jumlahData = count(cari($_GET["keyword"]));
+	$jumlahHalaman = ceil($jumlahData / $batas);
+	$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
+	$awalData = ($batas * $halamanAktif) - $batas;
+	$keyword = $_GET["keyword"];
+	$mahasiswa = query("SELECT * FROM mahasiswa WHERE nrp LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR email LIKE '%$keyword%' OR jurusan LIKE '%$keyword%' ORDER BY id DESC LIMIT $awalData, $batas");
+} else {
+	$jumlahData = count(query("SELECT id FROM mahasiswa"));
+	$jumlahHalaman = ceil($jumlahData / $batas);
+	$halamanAktif = (isset($_GET["halaman"])) ? $_GET["halaman"] : 1;
+	$awalData = ($batas * $halamanAktif) - $batas;
+
+	$mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC LIMIT $awalData, $batas");
 }
 
 ?>
@@ -45,7 +60,7 @@ if (isset($_POST["cari"])) {
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="tambah.php">Tambah</a>
 					</li>
-					<?php if (isset($_POST["cari"])) : ?>
+					<?php if (isset($_GET["cari"])) : ?>
 						<li class="nav-item">
 							<a class="nav-link" aria-current="page" href="index.php">Semua</a>
 						</li>
@@ -54,7 +69,7 @@ if (isset($_POST["cari"])) {
 						<a class="nav-link" aria-current="page" href="logout.php">Logout</a>
 					</li>
 				</ul>
-				<form action="" method="POST" class="d-flex">
+				<form action="" method="GET" class="d-flex">
 					<input class="form-control me-2" type="search" name="keyword" autofocus="" placeholder="Pencarian" autocomplete="off" aria-label="Search" required>
 					<button class="btn btn-outline-light" type="submit" name="cari">Cari</button>
 				</form>
@@ -63,6 +78,17 @@ if (isset($_POST["cari"])) {
 	</nav>
 	<div class="container-md">
 		<h2>Daftar</h2>
+		
+		<!-- navigasi -->
+		<?php if(!isset($_GET["cari"])) : ?>
+		<?php for($i=1; $i<=$jumlahHalaman; $i++) : ?>
+			<a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+		<?php endfor; ?>
+		<?php else : ?>
+		<?php for($i=1; $i<=$jumlahHalaman; $i++) : ?>
+			<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>"><?= $i; ?></a>
+		<?php endfor; ?>
+		<?php endif; ?>
 
 		<table class="table">
 			<thead>

@@ -1,6 +1,6 @@
 <?php 
 //koneksi mysql
-$conn = mysqli_connect("localhost", "root", "01nk4dj4", "phpdasar");
+$conn = mysqli_connect("localhost", "root", "", "phpdasar");
 
 function query($query) {
 	global $conn;
@@ -93,7 +93,7 @@ function ubah($data) {
 }
 
 function cari($keyword) {
-	$query = "SELECT * FROM mahasiswa WHERE nrp LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR email LIKE '%$keyword%' OR jurusan LIKE '%$keyword%' ORDER BY id DESC";
+	$query = "SELECT id FROM mahasiswa WHERE nrp LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR email LIKE '%$keyword%' OR jurusan LIKE '%$keyword%' ORDER BY id DESC";
 	return query($query);
 }
 
