@@ -8,9 +8,6 @@ if (!isset($_SESSION["login"])) {
 
 require "functions.php";
 
-// pagination
-$jumlahDataPerHalaman = 2;
-
 $mahasiswa = query("SELECT * FROM mahasiswa ORDER BY id DESC");
 
 // tombol cari ditekan
