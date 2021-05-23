@@ -67,7 +67,7 @@ if (isset($_POST["submit"])) {
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar navbar-expand-md navbar-dark bg-primary">
     <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">Login</span>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">

@@ -49,7 +49,7 @@ if (isset($_GET["cari"])) {
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-md-top">
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
 		<div class="container-fluid">
 			<span class="navbar-brand mb-0 h1">Mahasiswa</span>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -81,13 +81,33 @@ if (isset($_GET["cari"])) {
 		
 		<!-- navigasi -->
 		<?php if(!isset($_GET["cari"])) : ?>
-		<?php for($i=1; $i<=$jumlahHalaman; $i++) : ?>
-			<a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
-		<?php endfor; ?>
+			<?php if($halamanAktif>1) : ?>
+				<a href="?halaman=<?= $halamanAktif-1; ?>">&lt</a>
+			<?php endif; ?>
+			<?php for($i=1; $i<=$jumlahHalaman; $i++) : ?>
+				<?php if($i==$halamanAktif) : ?>
+					<a href="?halaman=<?= $i; ?>" style="color:red; font-weight:bold;"><?= $i; ?></a>
+				<?php else : ?>
+					<a href="?halaman=<?= $i; ?>"><?= $i; ?></a>
+				<?php endif; ?>
+			<?php endfor; ?>
+			<?php if($halamanAktif<$jumlahHalaman) : ?>
+				<a href="?halaman=<?= $halamanAktif+1; ?>">&gt</a>
+			<?php endif; ?>
 		<?php else : ?>
+			<?php if($halamanAktif>1) : ?>
+				<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif-1; ?>">&lt</a>
+			<?php endif; ?>
 		<?php for($i=1; $i<=$jumlahHalaman; $i++) : ?>
-			<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>"><?= $i; ?></a>
+			<?php if($i==$halamanAktif) : ?>
+				<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>" style="color:red; font-weight:bold;"><?= $i; ?></a>
+			<?php else : ?>
+				<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>"><?= $i; ?></a>
+			<?php endif; ?>
 		<?php endfor; ?>
+		<?php if($halamanAktif<$jumlahHalaman) : ?>
+			<a href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif+1; ?>">&gt</a>
+		<?php endif; ?>
 		<?php endif; ?>
 
 		<table class="table">

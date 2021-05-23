@@ -39,7 +39,7 @@ if (isset($_POST["submit"])) {
 </head>
 
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-md-top">
+	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 		<div class="container-fluid">
 			<span class="navbar-brand mb-0 h1">Mahasiswa</span>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@ if (isset($_POST["submit"])) {
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="index.php">Kembali</a>
+						<a class="nav-link" aria-current="page" href="javascript:history.back()">Kembali</a>
 					</li>
 					<li>
 						<a class="nav-link" href="hapus.php?id=<?= $id; ?>" onclick="return confirm('Yakin?')">Hapus</i></a>
