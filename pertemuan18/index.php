@@ -48,9 +48,11 @@ if (isset($_POST["cari"])) {
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="tambah.php">Tambah</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="index.php">Semua</a>
-					</li>
+					<?php if (isset($_POST["cari"])) : ?>
+						<li class="nav-item">
+							<a class="nav-link" aria-current="page" href="index.php">Semua</a>
+						</li>
+					<?php endif; ?>
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="logout.php">Logout</a>
 					</li>
