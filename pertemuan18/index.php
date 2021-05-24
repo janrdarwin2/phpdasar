@@ -81,7 +81,6 @@ if (isset($_GET["cari"])) {
 
 		<!-- navigasi -->
 
-
 		<?php if (!isset($_GET["cari"])) : ?>
 			<nav aria-label="navigasi">
 				<ul class="pagination">
