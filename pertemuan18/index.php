@@ -78,55 +78,6 @@ if (isset($_GET["cari"])) {
 	<div class="container-md">
 		<h2>Daftar</h2>
 
-		<!-- navigasi -->
-
-		<?php if (!isset($_GET["cari"])) : ?>
-			<nav aria-label="navigasi">
-				<ul class="pagination">
-					<?php if ($halamanAktif > 1) : ?>
-						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
-					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
-					<?php endif; ?>
-					<?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-						<?php if ($i == $halamanAktif) : ?>
-							<li class="page-item active"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
-						<?php else : ?>
-							<li class="page-item"><a class="page-link" href="?halaman=<?= $i; ?>"><?= $i; ?></a></li>
-						<?php endif; ?>
-					<?php endfor; ?>
-					<?php if ($halamanAktif < $jumlahHalaman) : ?>
-						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">&gt</a></li>
-					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&gt</a></li>
-					<?php endif; ?>
-				</ul>
-			</nav>
-
-		<?php else : ?>
-			<nav aria-label="navigasi">
-				<ul class="pagination">
-					<?php if ($halamanAktif > 1) : ?>
-						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
-					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
-					<?php endif; ?>
-					<?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
-						<?php if ($i == $halamanAktif) : ?>
-							<li class="page-item active"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>"><?= $i; ?></a></li>
-						<?php else : ?>
-							<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $i; ?>"><?= $i; ?></a></li>
-						<?php endif; ?>
-					<?php endfor; ?>
-					<?php if ($halamanAktif < $jumlahHalaman) : ?>
-						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif + 1; ?>">&gt</a></li>
-					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&gt</a></li>
-					<?php endif; ?>
-				</ul>
-			</nav>
-		<?php endif; ?>
-		<!-- akhir navigasi -->
 
 		<table class="table">
 			<thead>
@@ -156,9 +107,9 @@ if (isset($_GET["cari"])) {
 			<nav aria-label="navigasi">
 				<ul class="pagination">
 					<?php if ($halamanAktif > 1) : ?>
-						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
+						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&laquo</a></li>
 					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
+						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&laquo</a></li>
 					<?php endif; ?>
 					<?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
 						<?php if ($i == $halamanAktif) : ?>
@@ -168,9 +119,9 @@ if (isset($_GET["cari"])) {
 						<?php endif; ?>
 					<?php endfor; ?>
 					<?php if ($halamanAktif < $jumlahHalaman) : ?>
-						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">&gt</a></li>
+						<li class="page-item"><a class="page-link" href="?halaman=<?= $halamanAktif + 1; ?>">&raquo</a></li>
 					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&gt</a></li>
+						<li class="page-item disabled"><a class="page-link" href="?halaman=<?= $halamanAktif - 1; ?>">&raquo</a></li>
 					<?php endif; ?>
 				</ul>
 			</nav>
@@ -179,9 +130,9 @@ if (isset($_GET["cari"])) {
 			<nav aria-label="navigasi">
 				<ul class="pagination">
 					<?php if ($halamanAktif > 1) : ?>
-						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
+						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&laquo</a></li>
 					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&lt</a></li>
+						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&laquo</a></li>
 					<?php endif; ?>
 					<?php for ($i = 1; $i <= $jumlahHalaman; $i++) : ?>
 						<?php if ($i == $halamanAktif) : ?>
@@ -191,9 +142,9 @@ if (isset($_GET["cari"])) {
 						<?php endif; ?>
 					<?php endfor; ?>
 					<?php if ($halamanAktif < $jumlahHalaman) : ?>
-						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif + 1; ?>">&gt</a></li>
+						<li class="page-item"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif + 1; ?>">&raquo</a></li>
 					<?php else : ?>
-						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&gt</a></li>
+						<li class="page-item disabled"><a class="page-link" href="?keyword=<?= $keyword; ?>&cari=&halaman=<?= $halamanAktif - 1; ?>">&raquo</a></li>
 					<?php endif; ?>
 				</ul>
 			</nav>
