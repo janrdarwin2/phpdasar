@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION["login"])) {
@@ -19,7 +19,9 @@ if (isset($_POST["submit"])) {
 
 ?>
 
+<!doctype html>
 <html lang="en">
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -30,10 +32,11 @@ if (isset($_POST["submit"])) {
 
 	<title>Tambah Mahasiswa</title>
 </head>
+
 <body>
 	<nav class="navbar navbar-expand-md navbar-dark bg-primary">
 		<div class="container-fluid">
-		<span class="navbar-brand mb-0 h1">Mahasiswa</span>
+			<span class="navbar-brand mb-0 h1">Mahasiswa</span>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -45,32 +48,32 @@ if (isset($_POST["submit"])) {
 				</ul>
 			</div>
 		</div>
-  </nav>
+	</nav>
 	<div class="container-md">
 		<h2>Tambah</h2>
 		<form action="" method="post" enctype="multipart/form-data">
-				<div class="md-3">
-					<label class="form-label" for="nrp">NRP:</label>
-					<input class="form-control" type="text" name="nrp" id="nrp" required maxlength="9">
-				</div>
-				<div class="md-3">
-					<label class="form-label" for="nama">Nama:</label>
-					<input class="form-control" type="text" name="nama" id="nama" required>
-				</div>
-				<div class="md-3">
-					<label class="form-label" for="email">Email:</label>
-					<input class="form-control" type="text" name="email" id="email" required>
-				</div>
-				<div class="md-3">
-					<label class="form-label" for="jurusan">Jurusan:</label>
-					<input class="form-control" type="text" name="jurusan" id="jurusan" required>
-				</div>
-				<div class="md-3">
-					<label class="form-label" for="gambar">Gambar:</label>
-					<input class="form-control" type="file" name="gambar" id="gambar">
-				</div>
-				<button class="btn btn-primary btn-send" type="submit" name="submit">Kirim</button>
-				<button class="btn btn-primary mb-0" type="reset" name="reset">Reset</button>
+			<div class="md-3">
+				<label class="form-label" for="nrp">NRP:</label>
+				<input class="form-control" type="text" name="nrp" id="nrp" required maxlength="9">
+			</div>
+			<div class="md-3">
+				<label class="form-label" for="nama">Nama:</label>
+				<input class="form-control" type="text" name="nama" id="nama" required>
+			</div>
+			<div class="md-3">
+				<label class="form-label" for="email">Email:</label>
+				<input class="form-control" type="text" name="email" id="email" required>
+			</div>
+			<div class="md-3">
+				<label class="form-label" for="jurusan">Jurusan:</label>
+				<input class="form-control" type="text" name="jurusan" id="jurusan" required>
+			</div>
+			<div class="md-3">
+				<label class="form-label" for="gambar">Gambar:</label>
+				<input class="form-control" type="file" name="gambar" id="gambar">
+			</div>
+			<button class="btn btn-primary btn-send" type="submit" name="submit">Kirim</button>
+			<button class="btn btn-primary mb-0" type="reset" name="reset">Reset</button>
 		</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
@@ -81,4 +84,5 @@ if (isset($_POST["submit"])) {
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 	-->
 </body>
+
 </html>

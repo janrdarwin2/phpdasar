@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 
 if (!isset($_SESSION["login"])) {
@@ -9,15 +9,17 @@ if (!isset($_SESSION["login"])) {
 require "functions.php";
 
 if (isset($_POST["register"])) {
-	if (registrasi($_POST)>0) {
+	if (registrasi($_POST) > 0) {
 		echo "<script>alert('User baru berhasil ditambahkan!')</script>";
 	} else {
 		echo mysqli_error($conn);
 	}
 }
- ?>
+?>
 
+<!doctype html>
 <html lang="en">
+
 <head>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
@@ -28,10 +30,11 @@ if (isset($_POST["register"])) {
 
 	<title>Admin</title>
 </head>
+
 <body>
 	<div class="container-md">
-	<h2>Registrasi</h2>
-	<form action="" method="post">
+		<h2>Registrasi</h2>
+		<form action="" method="post">
 			<fieldset>
 				<div class="md-3">
 					<label class="form-label" for="username">Username:</label>
@@ -47,7 +50,7 @@ if (isset($_POST["register"])) {
 				</div>
 				<button class="btn btn-primary btn-send" type="submit" name="register">Kirim</button>
 			</fieldset>
-	</form>
+		</form>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 
@@ -56,6 +59,7 @@ if (isset($_POST["register"])) {
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 	-->
-	
+
 </body>
+
 </html>
