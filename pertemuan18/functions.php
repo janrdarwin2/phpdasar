@@ -1,18 +1,20 @@
-<?php 
+<?php
 //koneksi mysql
-$conn = mysqli_connect("localhost", "root", "", "phpdasar");
+$conn = mysqli_connect("localhost", "root", "root", "phpdasar");
 
-function query($query) {
+function query($query)
+{
 	global $conn;
 	$result = mysqli_query($conn, $query);
 	$rows = [];
-	while ( $row = mysqli_fetch_assoc($result)) {
+	while ($row = mysqli_fetch_assoc($result)) {
 		$rows[] = $row;
 	}
 	return $rows;
 }
 
-function tambah($data) {
+function tambah($data)
+{
 	global $conn;
 	$nrp = htmlspecialchars($data["nrp"]);
 	$nama = htmlspecialchars($data["nama"]);
@@ -20,16 +22,17 @@ function tambah($data) {
 	$jurusan = htmlspecialchars($data["jurusan"]);
 
 	$gambar = upload();
-	if (!$gambar) {		
+	if (!$gambar) {
 		return false;
 	}
 
-	$query = "INSERT INTO mahasiswa VALUES ('', '$nrp', '$nama', '$email', '$jurusan', '$gambar')";
+	$query = "INSERT INTO mahasiswa VALUES (NULL, '$nrp', '$nama', '$email', '$jurusan', '$gambar')";
 	mysqli_query($conn, $query);
 	return mysqli_affected_rows($conn);
 }
 
-function upload() {
+function upload()
+{
 	$namaFile = $_FILES["gambar"]["name"];
 	$ukuranFile = $_FILES["gambar"]["size"];
 	$error = $_FILES["gambar"]["error"];
@@ -61,17 +64,19 @@ function upload() {
 	$namaFileBaru = uniqid();
 	$namaFileBaru .= ".";
 	$namaFileBaru .= $ekstensiGambar;
-	move_uploaded_file($tmpName, "img/".$namaFileBaru);
+	move_uploaded_file($tmpName, "img/" . $namaFileBaru);
 	return $namaFileBaru;
 }
 
-function hapus($id) {
+function hapus($id)
+{
 	global $conn;
 	mysqli_query($conn, "DELETE FROM mahasiswa WHERE id = $id");
 	return mysqli_affected_rows($conn);
 }
 
-function ubah($data) {
+function ubah($data)
+{
 	global $conn;
 	$id = $data["id"];
 	$nrp = htmlspecialchars($data["nrp"]);
@@ -79,7 +84,7 @@ function ubah($data) {
 	$email = htmlspecialchars($data["email"]);
 	$jurusan = htmlspecialchars($data["jurusan"]);
 	$gambarLama = $data["gambarLama"];
-	
+
 	// cek user pilih gambar
 	if ($_FILES['gambar']['error'] === 4) {
 		$gambar = $gambarLama;
@@ -92,12 +97,14 @@ function ubah($data) {
 	return mysqli_affected_rows($conn);
 }
 
-function cari($keyword) {
+function cari($keyword)
+{
 	$query = "SELECT id FROM mahasiswa WHERE nrp LIKE '%$keyword%' OR nama LIKE '%$keyword%' OR email LIKE '%$keyword%' OR jurusan LIKE '%$keyword%' ORDER BY id DESC";
 	return query($query);
 }
 
-function registrasi($data) {
+function registrasi($data)
+{
 	global $conn;
 
 	$username = strtolower(stripslashes($data["username"]));
@@ -124,5 +131,4 @@ function registrasi($data) {
 	mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
 
 	return mysqli_affected_rows($conn);
-
 }
